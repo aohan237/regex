@@ -98,6 +98,16 @@ fn capture_index() {
     assert_eq!(&cap["name"], t!("abc"));
 }
 
+
+#[test]
+fn capture_cjk() {
+    let re = regex!(r"^(?P<名字>.+)$");
+    let cap = re.captures(t!("abc")).unwrap();
+    assert_eq!(&cap[0], t!("abc"));
+    assert_eq!(&cap[1], t!("abc"));
+    assert_eq!(&cap["名字"], t!("abc"));
+}
+
 #[test]
 #[should_panic]
 #[cfg_attr(all(target_env = "msvc", target_pointer_width = "32"), ignore)]
