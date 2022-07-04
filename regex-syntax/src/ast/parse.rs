@@ -105,6 +105,7 @@ fn is_capture_char(c: char, first: bool) -> bool {
             && (('0' <= c && c <= '9') || c == '.' || c == '[' || c == ']'))
         || ('A' <= c && c <= 'Z')
         || ('a' <= c && c <= 'z')
+        || ('\u{2E80}'<=c && c<= '\u{9FFF}')
 }
 
 /// A builder for a regular expression parser.
